@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { LessonResolver } from './lesson.resolver';
+import { Module } from '@nestjs/common'
+import { LessonResolver } from './lesson.resolver'
 
 @Module({
   providers: [LessonResolver],
