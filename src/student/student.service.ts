@@ -24,4 +24,8 @@ export class StudentService {
   getStudents() {
     return this.studentRepository.find()
   }
+
+  getStudent(id: string) {
+    return this.studentRepository.findOne({ id })
+  }
 }
