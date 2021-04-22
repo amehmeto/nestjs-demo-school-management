@@ -1,23 +1,23 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { LessonType } from './lesson.type'
+import { Lesson } from './lesson'
 import { LessonService } from './lesson.service'
 import { CreateLessonInput } from './lesson.input'
 
-@Resolver((of) => LessonType)
+@Resolver((of: void | undefined) => Lesson)
 export class LessonResolver {
   constructor(private lessonService: LessonService) {}
 
-  @Query((returns) => [LessonType])
-  getAllLessons() {
-    return this.lessonService.getAllLessons()
+  @Query((returns: void | undefined) => [Lesson])
+  getLessons() {
+    return this.lessonService.getLessons()
   }
 
-  @Query((returns) => LessonType)
+  @Query((returns: void | undefined) => Lesson)
   lesson(@Args('id') id: string) {
     return this.lessonService.getLesson(id)
   }
 
-  @Mutation((returns) => LessonType)
+  @Mutation((returns: void | undefined) => Lesson)
   createLesson(
     @Args('createLessonInput') createLessonInput: CreateLessonInput,
   ) {
